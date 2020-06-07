@@ -35,7 +35,6 @@ const Points = () => {
   const [items, setItems] = useState<Item[]>([])
   const [points, setPoints] = useState<Point[]>([])
   const [selectedItems, setSelectedItems] = useState<number[]>([])
-  const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0])
 
   const route = useRoute()
   const routeParams = route.params as Params
@@ -43,6 +42,7 @@ const Points = () => {
   useEffect(() => {
     api.get('items').then((response) => {
       setItems(response.data)
+      console.log("api get items: ", response.data);
     })
   }, [])
 
@@ -54,25 +54,28 @@ const Points = () => {
         items: selectedItems
       }
     }).then((response) => {
+      console.log("api get points:", response.data);
       setPoints(response.data)
     })
   }, [selectedItems])
 
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0])
   useEffect(() => {
     async function loadPosition() {
+      console.log('tentando pedir permissão pra pegar localização')
       const { status } = await Location.requestPermissionsAsync()
 
       if (status !== 'granted') {
+        console.log('não tem permissão pra localização')
         Alert.alert('Ops!', 'Precisamos de sua permissão para obter a localização')
         return
       } else {
         const location = await Location.getCurrentPositionAsync();
         const { latitude, longitude } = location.coords
+        console.log('latitude,longitude :>> ', latitude, longitude);
 
-        setInitialPosition([
-          latitude,
-          longitude
-        ])
+        setInitialPosition([latitude, longitude])
+        console.log('initialPosition :>> ', initialPosition);
       }
     }
     loadPosition()
@@ -110,7 +113,7 @@ const Points = () => {
           Encontre no mapa um ponto de coleta.
       </Text>
         <View style={styles.mapContainer} >
-          {initialPosition[0] !== 0 && (
+          {initialPosition[1] !== 0 ? (
             <MapView style={styles.map}
               initialRegion={{
                 latitude: initialPosition[0],
@@ -135,7 +138,7 @@ const Points = () => {
                 </Marker>
               ))}
             </MapView>
-          )}
+          ) : <Text>Carregando mapa...</Text>}
         </View>
       </View>
       <View style={styles.itemsContainer} >
