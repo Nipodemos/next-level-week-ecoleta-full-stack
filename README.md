@@ -1,4 +1,4 @@
-<h4 align="center"> 
+<h4 align="center">
 NextLevelWeek 1.0 Completo 🚀
 </h4>
 
@@ -6,14 +6,17 @@ NextLevelWeek 1.0 Completo 🚀
 <img height="400" width="600" src="./ecoleta_capa.png"/>
 </center>
 
-<h1 align="center"> 
-	♻ Ecoleta
+<h1 align="center">
+♻ Ecoleta
 </h1>
+
+# Ecoleta
 
 Projeto desenvolvido durante a **NLW - Next Level Week** oferecida pela [Rocketseat][rockeseat].
 O NLW é uma experiência online com muito conteúdo prático.
 
 ## 📜 Sobre
+
 O Ecoleta serve como um Marketplace, uma conexão entre empresas ou entidade que coletam resíduos, à pessoas que precisam fazer descarte dos resíduos. Construído com as tecnologias mais populares do mundo Javascript, este repositório contem uma API REST (Node.js) como backend, uma aplicação em ReactJS como frontend e um app mobile em React Native.
 
 A aplicação em **Node.js** (backend) é uma **API REST** escrita em **Node.JS** que serve dados ao frontend e ao mobile.
@@ -45,17 +48,20 @@ As seguintes ferramentas foram usadas na construção do projeto:
   - [Visual Studio Code][vscode]
 
 ## :rocket: Começando
+
 1. ``git clone https://github.com/Gabrielpdev/Ecoleta.git``
 2. ``cd Ecoleta``
 
 ### :rocket: Iniciando com o backend
+
 1. ``cd Backend``
 2. ``npm i``
-4. ``npm run knex:migrate``
-5. ``npm run knex:seed``
-6. ``npm run dev``
+3. ``npm run knex:migrate``
+4. ``npm run knex:seed``
+5. ``npm run dev``
 
-### 💻 Iniciando com o Front-end 
+### 💻 Iniciando com o Front-end
+
 1. ``cd Frontend``
 2. ``npm i``
 3. ``npm start``
